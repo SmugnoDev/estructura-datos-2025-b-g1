@@ -48,6 +48,7 @@ public class Ejercicio3_Temperaturas {
 
         }
 
+        // imprimir los datos calculados
         public void printData() {
             System.out.println("Minimo: " + this.minimo);
             System.out.println("Maximo: " + this.maximo);
@@ -58,7 +59,7 @@ public class Ejercicio3_Temperaturas {
     }
 
     public static void main(String[] args) {
-        String temperaturas = "  23.4, 21.8,22 .1, 24.0,20.5 ";
+        String temperaturas = "23.4, 21.8, 22.1, 24.0, 20.5";
         Estadisticas estadisticas = new Estadisticas(temperaturas);
 
         System.out.println("Original: " + temperaturas);
