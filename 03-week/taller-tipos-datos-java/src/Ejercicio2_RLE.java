@@ -1,4 +1,3 @@
-// Clase que implementa la compresión Run-Length Encoding (RLE)
 public class Ejercicio2_RLE {
     // Método que comprime una cadena usando RLE
     public static String comprimirRLE(String input) {
@@ -6,9 +5,10 @@ public class Ejercicio2_RLE {
         if (input == null || input.isEmpty())
             return "";
 
-        StringBuilder sb = new StringBuilder(); // Para construir el resultado
-        int count = 1; // Contador de repeticiones
-        char prev = input.charAt(0); // Primer caracter
+        // Usar StringBuilder para eficiencia
+        StringBuilder sb = new StringBuilder();
+        int count = 1;
+        char prev = input.charAt(0);
 
         // Recorre la cadena desde el segundo caracter
         for (int i = 1; i < input.length(); i++) {

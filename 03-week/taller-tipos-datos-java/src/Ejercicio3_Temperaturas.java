@@ -4,7 +4,7 @@
  * maximo, promedio y desviacion estandar.
  */
 public class Ejercicio3_Temperaturas {
-
+    // Clase interna para manejar las estadísticas
     public static class Estadisticas {
         private double[] tempArrDouble;
         private double suma;
@@ -13,6 +13,7 @@ public class Ejercicio3_Temperaturas {
         private double promedio;
         private double desviacionEstandar;
 
+        // Constructor que recibe el String de temperaturas
         public Estadisticas(String temperaturas) {
             // Convertir el String de temperaturas a un array de doubles
             String[] tempArrString = temperaturas.trim().replaceAll(" ", "").split(",");
@@ -33,7 +34,7 @@ public class Ejercicio3_Temperaturas {
                 if (temp > this.maximo) {
                     this.maximo = temp;
                 }
-                this.suma += temp;
+                this.suma += temp; // Acumular la suma
             }
 
             // Calcular el promedio
@@ -60,7 +61,7 @@ public class Ejercicio3_Temperaturas {
 
     public static void main(String[] args) {
         String temperaturas = "23.4, 21.8, 22.1, 24.0, 20.5";
-        Estadisticas estadisticas = new Estadisticas(temperaturas);
+        Estadisticas estadisticas = new Estadisticas(temperaturas); // Crear instancia de Estadisticas
 
         System.out.println("Original: " + temperaturas);
         System.out.println("Normalizado: " + temperaturas.trim().replaceAll(" ", ""));

@@ -21,6 +21,7 @@ import java.math.BigInteger;
 
 public class Ejercicio4_ConversorBases {
 
+    // Verifica si un caracter es válido para la base dada
     public static boolean esCaracterValido(char c, int base) {
         if (base == 2)
             return c == '0' || c == '1';
@@ -32,6 +33,7 @@ public class Ejercicio4_ConversorBases {
 
     }
 
+    // Verifica si toda la cadena es válida para la base dada
     public static boolean esCadenaValida(String numStr, int base) {
         for (char c : numStr.toCharArray()) {
             if (!esCaracterValido(c, base)) {
@@ -55,11 +57,13 @@ public class Ejercicio4_ConversorBases {
             System.out.println("Error: Caracteres inválidos para la base " + baseOrigen);
             return;
         }
-
+        // Variables para los resultados
         String binario = "";
         String decimal = "";
         String hexadecimal = "";
         boolean usoBigInteger = false;
+
+        // try-catch para manejar overflow con long
         try {
             // Intentar parsear a long
             long numLong = Long.parseLong(numStr, baseOrigen);
