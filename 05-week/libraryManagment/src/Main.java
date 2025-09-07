@@ -541,8 +541,8 @@ public class Main {
         boolean salir = false;
         while (!salir) {
             menu();
-            int op = leerEntero("Seleccione opción: ");
-            switch (op) {
+            int opcion = leerEntero("Seleccione opción: ");
+            switch (opcion) {
                 case 1 -> altaLibroUI(biblioteca);
                 case 2 -> bajaLibroUI(biblioteca);
                 case 3 -> buscarPorTituloUI(biblioteca);
@@ -576,37 +576,37 @@ public class Main {
         System.out.println("0) Salir");
     }
 
-    private static void altaLibroUI(BibliotecaU1 bib) {
+    private static void altaLibroUI(BibliotecaU1 biblioteca) {
         int codigo = leerEntero("Código: ");
         System.out.print("Título: ");
         String titulo = scanner.nextLine().trim();
         System.out.print("Autor: ");
         String autor = scanner.nextLine().trim();
         int stock = leerEntero("Stock total: ");
-        int suc = BibliotecaU1.NUM_SUCURSALES;
-        int[] dist = new int[suc];
+        int sucursales = BibliotecaU1.NUM_SUCURSALES;
+        int[] dist = new int[sucursales];
         int suma = 0;
-        for (int i = 0; i < suc; i++) {
+        for (int i = 0; i < sucursales; i++) {
             dist[i] = leerEntero("Disponibilidad Sucursal " + i + ": ");
             suma += dist[i];
         }
         if (suma != stock)
             System.out.println("Aviso: la suma no coincide; se ajustará si es necesario.");
-        boolean ok = bib.altaLibro(codigo, titulo, autor, stock, dist);
+        boolean ok = biblioteca.altaLibro(codigo, titulo, autor, stock, dist);
         if (ok)
             System.out.println("Alta registrada.");
     }
 
-    private static void bajaLibroUI(BibliotecaU1 bib) {
+    private static void bajaLibroUI(BibliotecaU1 biblioteca) {
         int codigo = leerEntero("Código a dar de baja: ");
-        if (bib.bajaLogicaPorCodigo(codigo))
+        if (biblioteca.bajaLogicaPorCodigo(codigo))
             System.out.println("Baja lógica realizada.");
     }
 
-    private static void buscarPorTituloUI(BibliotecaU1 bib) {
+    private static void buscarPorTituloUI(BibliotecaU1 biblioteca) {
         System.out.print("Título exacto: ");
         String titulo = scanner.nextLine().trim();
-        Libro l = bib.buscarPorTitulo(titulo);
+        Libro l = biblioteca.buscarPorTitulo(titulo);
         if (l == null)
             System.out.println("No encontrado.");
         else
@@ -621,11 +621,11 @@ public class Main {
             System.out.println("Préstamo realizado.");
     }
 
-    private static void devolverUI(BibliotecaU1 bib) {
+    private static void devolverUI(BibliotecaU1 biblioteca) {
         int codigo = leerEntero("Código de libro: ");
         System.out.print("Usuario: ");
         String usuario = scanner.nextLine().trim();
-        if (bib.devolverLibro(codigo, usuario))
+        if (biblioteca.devolverLibro(codigo, usuario))
             System.out.println("Devolución registrada.");
     }
 
@@ -641,39 +641,3 @@ public class Main {
         }
     }
 }
-
-/*
- * README (resumen)
- * 
- * Descripción
- * Sistema de gestión de biblioteca para Unidad 1 usando: arrays (catálogo +
- * disponibilidad 2D), lista simple (préstamos), lista doble (historial). Menú
- * de consola con operaciones de alta/baja/búsqueda/préstamo/devolución y
- * recorridos del historial.
- * 
- * Estructuras y complejidad
- * - Catálogo: array Libro[] ordenado por código. Alta con inserción ordenada
- * O(n). Búsqueda por código binaria O(log n). Búsqueda por título lineal O(n).
- * Baja lógica (flag activo) O(1).
- * - Disponibilidad: int[][] [libros][sucursales], actualización O(S).
- * - Préstamos: lista simple – inserción al final O(1), devolución requiere
- * búsqueda O(n), eliminación de nodo O(1).
- * - Historial: lista doble – inserción al final O(1), recorridos hacia ambos
- * sentidos.
- * 
- * Compilación y ejecución (Java 17+)
- * $ mkdir -p out/src
- * $ javac -d out src/Main.java
- * $ java -cp out Main
- * 
- * Validaciones clave
- * - Sin colecciones (ArrayList/LinkedList) para resolver estructuras pedidas.
- * - Control de duplicados de código, capacidad máxima, índices y stock.
- * - Préstamo solo si stock>0 y libro activo; devolución incrementa stock.
- * - Cada operación registra un nodo en historial doblemente enlazado.
- * 
- * Notas
- * - Para simplicidad, devolución suma a Sucursal 0. Puede ampliarse para elegir
- * sucursal.
- * - Método cargarDemo() agrega 3 libros de ejemplo.
- */
