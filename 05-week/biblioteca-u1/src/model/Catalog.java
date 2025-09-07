@@ -19,4 +19,13 @@ public class Catalog {
         }
         return false;
     }
+
+    public Book searchBook(String code) {
+        for (int i = 0; i < numberOfBooks; i++) {
+            if (books[i].getCode().equals(code)) {
+                return books[i];
+            }
+        }
+        return null;
+    }
 }

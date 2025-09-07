@@ -3,13 +3,29 @@ package model;
 public class Book {
     private String code;
     private String title;
-    private String autor;
+    private String author;
     private int stock;
 
-    public Book(String code, String title, String autor, int stock) {
+    public Book(String code, String title, String author, int stock) {
         this.code = code;
         this.title = title;
-        this.autor = autor;
+        this.author = author;
         this.stock = stock;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public int getStock() {
+        return stock;
     }
 }
