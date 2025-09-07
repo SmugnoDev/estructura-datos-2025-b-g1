@@ -336,8 +336,8 @@ class BibliotecaU1 {
             System.out.println("No existe el código.");
             return false;
         }
-        Libro l = catalogo[idx];
-        if (!l.activo) {
+        Libro libro = catalogo[idx];
+        if (!libro.activo) {
             System.out.println("El libro ya está dado de baja.");
             return false;
         }
@@ -353,11 +353,11 @@ class BibliotecaU1 {
                 cur = cur.next;
             }
         }
-        l.activo = false;
-        l.stock = 0;
+        libro.activo = false;
+        libro.stock = 0;
         for (int s = 0; s < NUM_SUCURSALES; s++)
             disponibilidad[idx][s] = 0;
-        historial.add(TipoOperacion.BAJA, "Baja libro #" + codigo + " - '" + l.titulo + "'");
+        historial.add(TipoOperacion.BAJA, "Baja libro #" + codigo + " - '" + libro.titulo + "'");
         return true;
     }
 
@@ -606,11 +606,12 @@ public class Main {
     private static void buscarPorTituloUI(BibliotecaU1 biblioteca) {
         System.out.print("Título exacto: ");
         String titulo = scanner.nextLine().trim();
-        Libro l = biblioteca.buscarPorTitulo(titulo);
-        if (l == null)
+        Libro libro = biblioteca.buscarPorTitulo(titulo);
+        if (libro == null)
             System.out.println("No encontrado.");
         else
-            System.out.printf("Encontrado -> Código: %d | Autor: %s | Stock: %d\n", l.codigo, l.autor, l.stock);
+            System.out.printf("Encontrado -> Código: %d | Autor: %s | Stock: %d\n", libro.codigo, libro.autor,
+                    libro.stock);
     }
 
     private static void prestarUI(BibliotecaU1 biblioteca) {
