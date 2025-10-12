@@ -58,6 +58,6 @@ Tecnología Hogar Aseo Bebidas Snacks
 
 ## Link Video explicacion
 
-- Video Explicativo: [Taller Práctico – Estructura de Datos](#https://youtu.be/xBZ47IXLIPk).
+- Video Explicativo: [Taller Práctico – Estructura de Datos](https://youtu.be/xBZ47IXLIPk)
 
 ---
