@@ -238,7 +238,7 @@ class ListaHistorial {
 }
 
 // ====== SISTEMA BIBLIOTECA (Arrays + Listas) ======
-class BibliotecaU1 {
+//class BibliotecaU1 {
     // Configurables
     public static final int MAX_LIBROS = 200;
     public static final int NUM_SUCURSALES = 3;
